@@ -57,11 +57,19 @@ export const users = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(loadUser.fulfilled, (state, action) => {
-      state.user = action.payload
-    })
+    builder
+      .addCase(loadUser.fulfilled, (state, action: PayloadAction<User>) => {
+        state.user = action.payload
+      })
+      .addCase(loadUser.pending, state => {
+        state.isLoadingUser = true
+        state.hasErrorUser = false
+      })
+      .addCase(loadUser.rejected, state => {
+        state.isLoadingUser = false
+        state.hasErrorUser = true
+      })
   },
 })
 
-export const {} = users.actions
 export default users.reducer
