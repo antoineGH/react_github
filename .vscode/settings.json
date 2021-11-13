@@ -1,0 +1,23 @@
+{
+	"terminal.integrated.profiles.windows": {
+		"PowerShell": {
+			"source": "PowerShell",
+			"icon": "terminal-powershell"
+		},
+		"Command Prompt": {
+			"path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"],
+			"args": [],
+			"icon": "terminal-cmd"
+		},
+		"Git Bash": {
+			"path": ["C:\\cygwin64\\bin\\bash.exe"],
+			"source": "Git Bash",
+			"icon": "terminal-bash",
+			"args": ["-l"],
+			"env": { "CHERE_INVOKING": "1" },
+			"label": "Cygwin Bash"
+		}
+	},
+
+	"terminal.integrated.defaultProfile.windows": "Git Bash"
+}
