@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+:root {
+  --color-bg-github: #161b22;
+}
+
 .text-white {
   color: white;
 }
@@ -11,4 +15,8 @@
 .desc-user-info .ant-descriptions-item-label {
   font-weight: bold;
   text-transform: capitalize;
+}
+
+.ant-layout-header {
+  background: var(--color-bg-github) !important;
 }
