@@ -21,6 +21,10 @@
   background: var(--color-bg-github) !important;
 }
 
+.ant-card-body {
+  padding: 16px !important;
+}
+
 .flex {
   display: flex;
 }
@@ -44,5 +48,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    margin: auto;
   }
 }
