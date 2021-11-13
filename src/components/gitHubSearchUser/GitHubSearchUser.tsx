@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { Input } from 'antd'
+import { Input, Row, Col } from 'antd'
 
 const { Search } = Input
 
@@ -16,16 +16,18 @@ const GitHubSearchUser = (): JSX.Element => {
   }
 
   return (
-    <>
-      <Search
-        placeholder="Search user.."
-        allowClear
-        onSearch={onSearch}
-        onChange={handleInputChange}
-        value={userInput}
-        style={{ width: 200 }}
-      />
-    </>
+    <Row className="row-margin-1rem">
+      <Col>
+        <Search
+          placeholder="Search user.."
+          allowClear
+          onSearch={onSearch}
+          onChange={handleInputChange}
+          value={userInput}
+          style={{ width: 200 }}
+        />
+      </Col>
+    </Row>
   )
 }
 
