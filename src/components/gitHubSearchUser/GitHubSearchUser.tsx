@@ -7,7 +7,8 @@ const GitHubSearchUser = (): JSX.Element => {
   const [userInput, setUserInput] = useState('')
 
   const onSearch = (): void => {
-    console.log('Search')
+    console.log('Search ' + userInput)
+    setUserInput('')
   }
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
