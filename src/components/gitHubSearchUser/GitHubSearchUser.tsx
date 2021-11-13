@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react'
 import { Input, Row, Col, Button } from 'antd'
 import { AppDispatch } from '../../store'
 import { useDispatch } from 'react-redux'
-import { loadUser } from 'reducers/users'
+import { loadUser, clearUser } from 'reducers/users'
 
 const { Search } = Input
 
@@ -20,7 +20,7 @@ const GitHubSearchUser = (): JSX.Element => {
   }
 
   const handleClear = (): void => {
-    console.log('Clear')
+    dispatch(clearUser())
   }
 
   return (

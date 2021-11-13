@@ -55,7 +55,11 @@ export const loadUser = createAsyncThunk(
 export const users = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    clearUser: state => {
+      state.user = initialState.user
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(loadUser.fulfilled, (state, action: PayloadAction<User>) => {
@@ -72,4 +76,5 @@ export const users = createSlice({
   },
 })
 
+export const { clearUser } = users.actions
 export default users.reducer
