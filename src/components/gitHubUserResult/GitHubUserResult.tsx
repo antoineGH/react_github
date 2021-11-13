@@ -1,12 +1,45 @@
-import { Col, Row, Card, Descriptions, Avatar, Image, Typography } from 'antd'
+import {
+  Col,
+  Row,
+  Card,
+  Descriptions,
+  Avatar,
+  Image,
+  Typography,
+  Button,
+} from 'antd'
+import { CloseOutlined } from '@ant-design/icons'
 
 const GitHubUserResult = (): JSX.Element => {
   const { Title } = Typography
+
+  const handleClose = (): void => {
+    console.log('Close')
+  }
 
   return (
     <Row className="row-margin-1rem">
       <Col>
         <Card bordered={false}>
+          <Row>
+            <Col
+              xs={{ offset: 22 }}
+              md={{ offset: 23 }}
+              style={{
+                width: '100%',
+                justifyContent: 'center',
+                display: 'flex',
+              }}
+            >
+              <Button
+                id="btn-delete"
+                type="text"
+                icon={<CloseOutlined />}
+                size="large"
+                onClick={handleClose}
+              />
+            </Col>
+          </Row>
           <Row className="row-margin-1rem">
             <Col className="user-avatar">
               <Avatar

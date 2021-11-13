@@ -33,6 +33,12 @@
   padding: 1rem;
 }
 
+#btn-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 480px) {
   .user-avatar {
     display: flex;
