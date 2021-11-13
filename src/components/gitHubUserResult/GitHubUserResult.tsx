@@ -8,7 +8,7 @@ const GitHubUserResult = (): JSX.Element => {
       <Col>
         <Card bordered={false}>
           <Row className="row-margin-1rem">
-            <Col>
+            <Col className="user-avatar">
               <Avatar
                 size={100}
                 src={
@@ -19,8 +19,14 @@ const GitHubUserResult = (): JSX.Element => {
                 }
               />
             </Col>
-            <Col>
-              <Title level={2}>antoineratat</Title>
+            <Col className="flex align-center padding-1rem user-avatar">
+              <a
+                href="https://github.com/antoineratat"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Title level={2}>antoineratat</Title>
+              </a>
             </Col>
           </Row>
           <Row className="row-margin-1rem">
@@ -32,7 +38,13 @@ const GitHubUserResult = (): JSX.Element => {
                 </Descriptions.Item>
                 <Descriptions.Item label="ID">35226140</Descriptions.Item>
                 <Descriptions.Item label="URL">
-                  https://github.com/antoineratat
+                  <a
+                    href="https://github.com/antoineratat"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    https://github.com/antoineratat
+                  </a>
                 </Descriptions.Item>
                 <Descriptions.Item label="created">
                   2018-01-08T13:42:43Z
