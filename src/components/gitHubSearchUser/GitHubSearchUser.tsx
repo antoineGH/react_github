@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react'
-import { Input, Row, Col } from 'antd'
+import { Input, Row, Col, Button } from 'antd'
 
 const { Search } = Input
 
@@ -15,6 +15,10 @@ const GitHubSearchUser = (): JSX.Element => {
     setUserInput(event?.currentTarget.value)
   }
 
+  const handleClear = (): void => {
+    console.log('Clear')
+  }
+
   return (
     <Row className="row-margin-1rem">
       <Col>
@@ -26,6 +30,11 @@ const GitHubSearchUser = (): JSX.Element => {
           value={userInput}
           style={{ width: 200 }}
         />
+      </Col>
+      <Col style={{ margin: 'auto 1rem' }}>
+        <Button danger onClick={handleClear}>
+          Clear
+        </Button>
       </Col>
     </Row>
   )
