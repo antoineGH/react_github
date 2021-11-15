@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User, UserSlice } from '../types/user'
-
-// Slice Reducer
-////////////////////////////////
+import { getUser } from 'api/user'
 
 const initialState: UserSlice = {
   user: {
@@ -43,14 +41,7 @@ const initialState: UserSlice = {
   hasErrorUser: false,
 }
 
-export const loadUser = createAsyncThunk(
-  'user/getUser',
-  async (userName: string): Promise<User> => {
-    const data = await fetch(`https://api.github.com/users/${userName}`)
-    const json = await data.json()
-    return json
-  },
-)
+export const loadUser = createAsyncThunk('user/getUser', getUser)
 
 export const users = createSlice({
   name: 'users',
