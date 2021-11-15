@@ -39,6 +39,7 @@ const initialState: UserSlice = {
   },
   isLoadingUser: false,
   hasErrorUser: false,
+  errorMessage: '',
 }
 
 export const loadUser = createAsyncThunk('user/getUser', getUser)
@@ -62,9 +63,10 @@ export const users = createSlice({
         state.isLoadingUser = true
         state.hasErrorUser = false
       })
-      .addCase(loadUser.rejected, state => {
+      .addCase(loadUser.rejected, (state, action) => {
         state.isLoadingUser = false
         state.hasErrorUser = true
+        state.errorMessage = action?.error?.message
       })
   },
 })

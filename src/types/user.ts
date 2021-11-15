@@ -37,4 +37,5 @@ export interface UserSlice {
   user: User
   isLoadingUser: boolean
   hasErrorUser: boolean
+  errorMessage: string | undefined
 }

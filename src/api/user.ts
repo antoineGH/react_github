@@ -5,7 +5,10 @@ export const getUser = async (userName: string): Promise<User> => {
   const json = await data.json()
 
   return new Promise((resolve, reject) => {
-    json && json.hasOwnProperty('login') && resolve(json)
+    if (json) {
+      json.hasOwnProperty('login') && resolve(json)
+      json.hasOwnProperty('message') && reject(json)
+    }
     reject()
   })
 }
