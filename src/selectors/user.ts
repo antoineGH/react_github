@@ -15,3 +15,7 @@ export const getHasErrorUser = createSelector(
   getUser,
   (slice: UserSlice) => slice?.hasErrorUser,
 )
+export const getErrorMessage = createSelector(
+  getUser,
+  (slice: UserSlice) => slice?.errorMessage,
+)

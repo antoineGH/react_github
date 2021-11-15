@@ -1,9 +1,14 @@
 import { Row, Col, Layout } from 'antd'
 import GitHubSearchUser from '../gitHubSearchUser/GitHubSearchUser'
 import GitHubUserResult from '../gitHubUserResult/GitHubUserResult'
+import { User } from 'types/user'
 
-const GitHubContent = (): JSX.Element => {
+type Props = { user: User; isLoadingUser: boolean; hasErrorUser: boolean }
+
+const GitHubContent = (props: Props): JSX.Element => {
+  const { user, isLoadingUser, hasErrorUser } = props
   const { Content } = Layout
+
   return (
     <Content>
       <Row>
@@ -11,7 +16,11 @@ const GitHubContent = (): JSX.Element => {
           <GitHubSearchUser />
         </Col>
         <Col span={24}>
-          <GitHubUserResult />
+          <GitHubUserResult
+            user={user}
+            isLoadingUser={isLoadingUser}
+            hasErrorUser={hasErrorUser}
+          />
         </Col>
       </Row>
     </Content>
