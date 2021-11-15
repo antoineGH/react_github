@@ -5,7 +5,7 @@ export const getUser = async (userName: string): Promise<User> => {
   const json = await data.json()
 
   return new Promise((resolve, reject) => {
-    json && Object.hasOwnProperty('Login') && resolve(json)
+    json && json.hasOwnProperty('login') && resolve(json)
     reject()
   })
 }
