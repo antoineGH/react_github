@@ -50,6 +50,7 @@ export const users = createSlice({
   reducers: {
     clearUser: state => {
       state.user = initialState.user
+      state.errorMessage = ''
     },
   },
   extraReducers: builder => {
@@ -61,8 +62,10 @@ export const users = createSlice({
         state.errorMessage = ''
       })
       .addCase(loadUser.pending, state => {
+        state.user = initialState.user
         state.isLoadingUser = true
         state.hasErrorUser = false
+        state.errorMessage = ''
       })
       .addCase(loadUser.rejected, (state, action) => {
         state.isLoadingUser = false

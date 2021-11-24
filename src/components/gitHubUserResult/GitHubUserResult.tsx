@@ -16,15 +16,17 @@ type Props = { user: User; isLoadingUser: boolean; hasErrorUser: boolean }
 
 const GitHubUserResult = (props: Props): JSX.Element => {
   const { user, isLoadingUser, hasErrorUser } = props
-  console.log(user)
   const errorMessage = useAppSelector(getErrorMessage)
-
   const { Title } = Typography
 
-  return (
-    <>
+  const displayEmptyUser = (): JSX.Element => {
+    return <></>
+  }
+
+  const displayUser = (): JSX.Element => {
+    return (
       <Row className="row-margin-1rem">
-        <Col>
+        <Col className="col-w100">
           <Card bordered={false}>
             <Skeleton loading={isLoadingUser} active>
               <Row className="row-margin-1rem">
@@ -32,10 +34,7 @@ const GitHubUserResult = (props: Props): JSX.Element => {
                   <Avatar
                     size={100}
                     src={
-                      <Image
-                        src="https://avatars.githubusercontent.com/u/35226140?v=4"
-                        style={{ width: 100 }}
-                      />
+                      <Image src={user?.avatar_url} style={{ width: 100 }} />
                     }
                   />
                 </Col>
@@ -45,41 +44,68 @@ const GitHubUserResult = (props: Props): JSX.Element => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Title level={2}>antoineratat</Title>
+                    <Title level={2}>{user?.login}</Title>
                   </a>
                 </Col>
               </Row>
               <Row className="row-margin-1rem">
                 <Col>
                   <Descriptions className="desc-user-info">
-                    <Descriptions.Item label="name">Antoine</Descriptions.Item>
-                    <Descriptions.Item label="location">
-                      Chengdu, China
+                    <Descriptions.Item label="name">
+                      {user?.name}
                     </Descriptions.Item>
-                    <Descriptions.Item label="ID">35226140</Descriptions.Item>
+                    <Descriptions.Item label="location">
+                      {user?.location}
+                    </Descriptions.Item>
+                    <Descriptions.Item label="ID">{user?.id}</Descriptions.Item>
                     <Descriptions.Item label="URL">
-                      <a
-                        href="https://github.com/antoineratat"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        https://github.com/antoineratat
+                      <a href={user?.url} target="_blank" rel="noreferrer">
+                        {user?.url}
                       </a>
                     </Descriptions.Item>
                     <Descriptions.Item label="created">
-                      2018-01-08T13:42:43Z
+                      {user?.created_at}
                     </Descriptions.Item>
                     <Descriptions.Item label="updated">
-                      2021-11-05T16:56:36Z
+                      {user?.updated_at}
                     </Descriptions.Item>
                   </Descriptions>
                 </Col>
               </Row>
             </Skeleton>
-            {hasErrorUser && <p>{errorMessage}</p>}
           </Card>
         </Col>
       </Row>
+    )
+  }
+
+  const displayError = (): JSX.Element => {
+    return (
+      <Row className="row-margin-1rem">
+        <Col className="col-w100">
+          <Card bordered={false}>
+            <Row className="row-margin-1rem">
+              <Col>
+                <Descriptions.Item label="name">
+                  {errorMessage}
+                </Descriptions.Item>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+      </Row>
+    )
+  }
+
+  return (
+    <>
+      {hasErrorUser
+        ? displayError()
+        : !isLoadingUser
+        ? user?.login === ''
+          ? displayEmptyUser()
+          : displayUser()
+        : displayUser()}
     </>
   )
 }
