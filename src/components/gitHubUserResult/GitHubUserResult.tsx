@@ -21,7 +21,12 @@ const GitHubUserResult = (props: Props): JSX.Element => {
             <Card bordered={false}>
               <Skeleton loading={isLoadingUser} active>
                 <Row>
-                  <Col span={3} className="user-avatar">
+                  <Col
+                    sm={{ span: 7 }}
+                    md={{ span: 4 }}
+                    lg={{ span: 3 }}
+                    className="user-avatar"
+                  >
                     <Avatar
                       size={100}
                       src={
@@ -29,27 +34,64 @@ const GitHubUserResult = (props: Props): JSX.Element => {
                       }
                     />
                   </Col>
-                  <Col span={21} className="user-info">
+                  <Col
+                    sm={{ span: 17 }}
+                    md={{ span: 20 }}
+                    lg={{ span: 21 }}
+                    className="user-info"
+                  >
                     <Row className="row-info">
-                      <Col span={12} className="col-info">
+                      <Col
+                        xs={{ span: 24 }}
+                        sm={{ span: 24 }}
+                        md={{ span: 12 }}
+                        lg={{ span: 12 }}
+                        xl={{ span: 6 }}
+                        xxl={{ span: 4 }}
+                        className="col-info"
+                      >
                         <Row>
                           <span className="span-info">Name:</span> {user?.name}
                         </Row>
                       </Col>
-                      <Col span={12} className="col-info">
+                      <Col
+                        xs={{ span: 24 }}
+                        sm={{ span: 24 }}
+                        md={{ span: 12 }}
+                        lg={{ span: 12 }}
+                        xl={{ span: 18 }}
+                        xxl={{ span: 20 }}
+                        className="col-info"
+                      >
                         <Row>
                           <span className="span-info">ID:</span> {user?.id}
                         </Row>
                       </Col>
                     </Row>
                     <Row className="row-info">
-                      <Col span={12} className="col-info">
+                      <Col
+                        xs={{ span: 24 }}
+                        sm={{ span: 24 }}
+                        md={{ span: 12 }}
+                        lg={{ span: 12 }}
+                        xl={{ span: 6 }}
+                        xxl={{ span: 4 }}
+                        className="col-info"
+                      >
                         <Row>
                           <span className="span-info">Location:</span>
                           {user?.location}
                         </Row>
                       </Col>
-                      <Col span={12} className="col-info">
+                      <Col
+                        xs={{ span: 24 }}
+                        sm={{ span: 24 }}
+                        md={{ span: 12 }}
+                        lg={{ span: 12 }}
+                        xl={{ span: 18 }}
+                        xxl={{ span: 20 }}
+                        className="col-info"
+                      >
                         <Row>
                           <span className="span-info">URL:</span>
                           <a href={user?.url} target="_blank" rel="noreferrer">
@@ -59,13 +101,29 @@ const GitHubUserResult = (props: Props): JSX.Element => {
                       </Col>
                     </Row>
                     <Row className="row-info">
-                      <Col span={12} className="col-info">
+                      <Col
+                        xs={{ span: 24 }}
+                        sm={{ span: 24 }}
+                        md={{ span: 12 }}
+                        lg={{ span: 12 }}
+                        xl={{ span: 6 }}
+                        xxl={{ span: 4 }}
+                        className="col-info"
+                      >
                         <Row>
                           <span className="span-info">Created:</span>
                           {convertDate(user?.created_at)}
                         </Row>
                       </Col>
-                      <Col span={12} className="col-info">
+                      <Col
+                        xs={{ span: 24 }}
+                        sm={{ span: 24 }}
+                        md={{ span: 12 }}
+                        lg={{ span: 12 }}
+                        xl={{ span: 18 }}
+                        xxl={{ span: 20 }}
+                        className="col-info"
+                      >
                         <Row>
                           <span className="span-info">Updated:</span>
                           {convertDate(user?.updated_at)}
