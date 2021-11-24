@@ -2,81 +2,83 @@ import { User } from 'types/user'
 import { useAppSelector } from '../../hooks/hooks'
 import { getErrorMessage } from '../../selectors/user'
 import convertDate from './utils/convertDate'
-import {
-  Col,
-  Row,
-  Card,
-  Descriptions,
-  Avatar,
-  Image,
-  Typography,
-  Skeleton,
-} from 'antd'
+import { Col, Row, Card, Descriptions, Avatar, Image, Skeleton } from 'antd'
 
 type Props = { user: User; isLoadingUser: boolean; hasErrorUser: boolean }
 
 const GitHubUserResult = (props: Props): JSX.Element => {
   const { user, isLoadingUser, hasErrorUser } = props
   const errorMessage = useAppSelector(getErrorMessage)
-  const { Title } = Typography
-
   const displayEmptyUser = (): JSX.Element => {
     return <></>
   }
 
   const displayUser = (): JSX.Element => {
     return (
-      <Row className="row-margin-1rem">
-        <Col className="col-w100">
-          <Card bordered={false}>
-            <Skeleton loading={isLoadingUser} active>
-              <Row className="row-margin-1rem">
-                <Col className="user-avatar">
-                  <Avatar
-                    size={100}
-                    src={
-                      <Image src={user?.avatar_url} style={{ width: 100 }} />
-                    }
-                  />
-                </Col>
-                <Col className="flex align-center padding-1rem user-avatar">
-                  <a
-                    href="https://github.com/antoineratat"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Title level={2}>{user?.login}</Title>
-                  </a>
-                </Col>
-              </Row>
-              <Row className="row-margin-1rem">
-                <Col>
-                  <Descriptions className="desc-user-info">
-                    <Descriptions.Item label="name">
-                      {user?.name}
-                    </Descriptions.Item>
-                    <Descriptions.Item label="location">
-                      {user?.location}
-                    </Descriptions.Item>
-                    <Descriptions.Item label="ID">{user?.id}</Descriptions.Item>
-                    <Descriptions.Item label="URL">
-                      <a href={user?.url} target="_blank" rel="noreferrer">
-                        {user?.url}
-                      </a>
-                    </Descriptions.Item>
-                    <Descriptions.Item label="created">
-                      {convertDate(user?.created_at)}
-                    </Descriptions.Item>
-                    <Descriptions.Item label="updated">
-                      {convertDate(user?.updated_at)}
-                    </Descriptions.Item>
-                  </Descriptions>
-                </Col>
-              </Row>
-            </Skeleton>
-          </Card>
-        </Col>
-      </Row>
+      <>
+        <Row className="row-margin-1rem">
+          <Col className="col-w100">
+            <Card bordered={false}>
+              <Skeleton loading={isLoadingUser} active>
+                <Row>
+                  <Col span={3} className="user-avatar">
+                    <Avatar
+                      size={100}
+                      src={
+                        <Image src={user?.avatar_url} style={{ width: 100 }} />
+                      }
+                    />
+                  </Col>
+                  <Col span={21} className="user-info">
+                    <Row className="row-info">
+                      <Col span={12} className="col-info">
+                        <Row>
+                          <span className="span-info">Name:</span> {user?.name}
+                        </Row>
+                      </Col>
+                      <Col span={12} className="col-info">
+                        <Row>
+                          <span className="span-info">ID:</span> {user?.id}
+                        </Row>
+                      </Col>
+                    </Row>
+                    <Row className="row-info">
+                      <Col span={12} className="col-info">
+                        <Row>
+                          <span className="span-info">Location:</span>
+                          {user?.location}
+                        </Row>
+                      </Col>
+                      <Col span={12} className="col-info">
+                        <Row>
+                          <span className="span-info">URL:</span>
+                          <a href={user?.url} target="_blank" rel="noreferrer">
+                            {user?.url}
+                          </a>
+                        </Row>
+                      </Col>
+                    </Row>
+                    <Row className="row-info">
+                      <Col span={12} className="col-info">
+                        <Row>
+                          <span className="span-info">Created:</span>
+                          {convertDate(user?.created_at)}
+                        </Row>
+                      </Col>
+                      <Col span={12} className="col-info">
+                        <Row>
+                          <span className="span-info">Updated:</span>
+                          {convertDate(user?.updated_at)}
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Skeleton>
+            </Card>
+          </Col>
+        </Row>
+      </>
     )
   }
 
