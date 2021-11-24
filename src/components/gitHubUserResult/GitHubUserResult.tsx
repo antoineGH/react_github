@@ -1,6 +1,7 @@
 import { User } from 'types/user'
 import { useAppSelector } from '../../hooks/hooks'
 import { getErrorMessage } from '../../selectors/user'
+import convertDate from './utils/convertDate'
 import {
   Col,
   Row,
@@ -64,10 +65,10 @@ const GitHubUserResult = (props: Props): JSX.Element => {
                       </a>
                     </Descriptions.Item>
                     <Descriptions.Item label="created">
-                      {user?.created_at}
+                      {convertDate(user?.created_at)}
                     </Descriptions.Item>
                     <Descriptions.Item label="updated">
-                      {user?.updated_at}
+                      {convertDate(user?.updated_at)}
                     </Descriptions.Item>
                   </Descriptions>
                 </Col>
